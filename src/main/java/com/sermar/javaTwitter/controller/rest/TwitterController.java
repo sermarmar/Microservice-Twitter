@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,21 @@ public class TwitterController {
 	@Autowired
 	ITweetService tweetService;
 	
+	@Value("${key}")
+	private String key;
+	@Value("${secret}")
+	private String secret;
+	@Value("${token}")
+	private String token;
+	@Value("${tsecret}")
+	private String tokenSecret;
+	
 	//Este endpoint podemos consultar los tweets de usuarios que tengan más de 1500 seguidores y pueden leer en diferentes idiomas que tiene que ser español, fracés e italiano
 	@GetMapping(value = "getTweets")
 	public ResponseEntity<List<TweetDTO>> getTweets(){
+		
+		String key = this.key;
+		String secret = this.secret;
 		
 		List<TweetDTO> lstTweets = new ArrayList<>();
 		

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sermar.javaTwitter.conexion.TwitterService;
 import com.sermar.javaTwitter.controller.dto.HashtagDTO;
 import com.sermar.javaTwitter.controller.dto.TweetDTO;
 import com.sermar.javaTwitter.entities.TweetEntity;
@@ -15,22 +16,43 @@ import com.sermar.javaTwitter.repository.TweetRepository;
 import com.sermar.javaTwitter.service.ITweetService;
 import com.sermar.javaTwitter.utils.ParseUtil;
 
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
+import twitter4j.conf.ConfigurationBuilder;
+
 @Service
 public class TweetService implements ITweetService{
 	
 	@Autowired
 	TweetRepository tweetRepository;
+	
+	@Autowired
+	TwitterService twitterService;
 
 	//Allí podemos consultar los tweets desde Twitter
 	public List<TweetDTO> getTweets() {
 		
 		List<TweetDTO> lstTweetsDTO = new ArrayList<TweetDTO>();
 		
-		/*Twitter twitter = TwitterFactory.getSingleton();
-		List<Status> lstStatuses = twitter.getHomeTimeline();
-		for (Status status : lstStatuses) {
-			status.
-		}*/
+		
+//		TwitterClient tw = twitterService.conectarTwitter();
+//		
+//		Tweet tweet = tw.getTweet("1228393702244134912");
+		
+		ConfigurationBuilder cb = twitterService.conectarTwitter();//twitterService.conectarTwitter();
+		Twitter tf = new TwitterFactory(cb.build()).getInstance();
+		
+		List<Status> lstStatus = new ArrayList<Status>();
+		List<User> users = new ArrayList<User>();
+		try {
+			lstStatus = tf.getUserTimeline();
+		} catch (twitter4j.TwitterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		List<TweetEntity> lstTweets = tweetRepository.findAll();
 		
