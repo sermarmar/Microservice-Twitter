@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.sermar.javaTwitter.conexion.TwitterService;
@@ -30,6 +31,15 @@ public class TweetService implements ITweetService{
 	
 	@Autowired
 	TwitterService twitterService;
+	
+	@Value("${key}")
+	private String key;
+	@Value("${secret}")
+	private String secret;
+	@Value("${token}")
+	private String token;
+	@Value("${tsecret}")
+	private String tokenSecret;
 
 	//Allí podemos consultar los tweets desde Twitter
 	public List<TweetDTO> getTweets() {
@@ -37,12 +47,14 @@ public class TweetService implements ITweetService{
 		List<TweetDTO> lstTweetsDTO = new ArrayList<TweetDTO>();
 		
 		
-//		TwitterClient tw = twitterService.conectarTwitter();
-//		
-//		Tweet tweet = tw.getTweet("1228393702244134912");
-		
-		ConfigurationBuilder cb = twitterService.conectarTwitter();//twitterService.conectarTwitter();
-		Twitter tf = new TwitterFactory(cb.build()).getInstance();
+		//ConfigurationBuilder cb = twitterService.conectarTwitter();	
+		ConfigurationBuilder config = new ConfigurationBuilder();
+		config.setDebugEnabled(true);
+		config.setOAuthConsumerKey(this.key);
+		config.setOAuthConsumerSecret(this.secret);
+		config.setOAuthAccessToken(this.token);
+		config.setOAuthAccessTokenSecret(this.tokenSecret);
+		Twitter tf = new TwitterFactory(config.build()).getInstance();
 		
 		List<Status> lstStatus = new ArrayList<Status>();
 		List<User> users = new ArrayList<User>();

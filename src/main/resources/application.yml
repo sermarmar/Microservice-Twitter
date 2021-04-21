@@ -10,9 +10,9 @@ spring:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
     
-key: xxx
-secret: xxx
-token: xxx
-tsecret: xxx
+key: HczroUeChuBOs1cf3drj4iHkc
+secret: kHOxoeFgAnaKg9Vc7eUxpO5AL5q1zmjdy7jtTjJUf8ihTtzeK2
+token: 3430250164-L5VqyDrnj8XNhLNfjXqkD1JOUgF3CR4DrLLwONp
+tsecret: ACmXgPPxmg1MBAxjDuylYZ5O2Tmc9MY5qtMQ5GL1NeQo3
 bearer: xxx
     

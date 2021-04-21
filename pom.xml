@@ -14,9 +14,6 @@
 	<packaging>war</packaging>
 	<name>javatwitter</name>
 	<description>Java - Twitter</description>
-	<properties>
-		<java.version>16</java.version>
-	</properties>
 	<dependencies>
     	<dependency>
 	      <groupId>org.springframework.boot</groupId>
