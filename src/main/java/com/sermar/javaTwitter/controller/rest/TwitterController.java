@@ -16,6 +16,8 @@ import com.sermar.javaTwitter.controller.dto.HashtagDTO;
 import com.sermar.javaTwitter.controller.dto.TweetDTO;
 import com.sermar.javaTwitter.service.ITweetService;
 
+import twitter4j.TwitterException;
+
 //Está en desarrollo, ya que no tengo acceso a Twitter de momento, disculpa la molestia.
 
 @RestController("/rest")
@@ -35,14 +37,19 @@ public class TwitterController {
 	
 	//Este endpoint podemos consultar los tweets de usuarios que tengan más de 1500 seguidores y pueden leer en diferentes idiomas que tiene que ser español, fracés e italiano
 	@GetMapping(value = "getTweets")
-	public ResponseEntity<List<TweetDTO>> getTweets(){
+	public ResponseEntity getTweets(){
 		
 		String key = this.key;
 		String secret = this.secret;
 		
 		List<TweetDTO> lstTweets = new ArrayList<>();
 		
-		lstTweets = tweetService.getTweets();
+		try {
+			lstTweets = tweetService.getTweets();
+		} catch (TwitterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return ResponseEntity.ok(lstTweets);
 		
