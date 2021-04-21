@@ -47,7 +47,7 @@ public class TweetService implements ITweetService{
 		List<Status> lstStatus = new ArrayList<Status>();
 		List<User> users = new ArrayList<User>();
 		try {
-			lstStatus = tf.getUserTimeline();
+			lstStatus = tf.getUserTimeline("snap");
 		} catch (twitter4j.TwitterException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

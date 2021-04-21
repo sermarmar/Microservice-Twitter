@@ -28,16 +28,6 @@ public class TwitterService {
 
 		return config;
 	}
-	
-//	public TwitterClient conectarTwitter() {
-//		
-//		return new TwitterClient(TwitterCredentials.builder()
-//				.accessToken(key)
-//				.accessTokenSecret(tokenSecret)
-//				.apiKey(key)
-//				.apiSecretKey(secret)
-//				.build());
-//		
-//	}
+
 
 }
