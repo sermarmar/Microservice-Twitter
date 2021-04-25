@@ -9,7 +9,7 @@ import twitter4j.TwitterException;
 
 public interface ITweetService {
 	
-	public List<TweetDTO> getTweets() throws TwitterException;
+	public List<TweetDTO> getTweets();
 	
 	public void marcarTweet(Long id) throws TwitterException;
 	

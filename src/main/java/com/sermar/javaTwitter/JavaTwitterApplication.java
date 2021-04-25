@@ -26,9 +26,9 @@ public class JavaTwitterApplication {
 	
 	@Scheduled(fixedDelay = 600000, initialDelay = 3000)
 	public void savedTwitter() {
-		System.out.println("Iniciando el guardado de Tweets");
+
 		tweetService.savedTweets();
-		System.out.println("Fin de tweets");
+
 	}
 
 }

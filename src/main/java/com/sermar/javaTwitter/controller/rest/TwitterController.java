@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,13 +31,8 @@ public class TwitterController {
 		
 		List<TweetDTO> lstTweets = new ArrayList<>();
 		
-		try {
-			lstTweets = tweetService.getTweets();
-		} catch (TwitterException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		lstTweets = tweetService.getTweets();
+
 		return ResponseEntity.ok(lstTweets);
 		
 	}
@@ -75,9 +69,7 @@ public class TwitterController {
 	//Este endpoint podemos consultar las clasificaciones de hashtags más usados, solo debe recuperar 10 hashtags distintos.
 	@GetMapping(value = "getHashtag")
 	public ResponseEntity<List<HashtagDTO>> getHashtags(){
-		List<HashtagDTO> lstHashtags = new ArrayList<>();
-		
-		lstHashtags = tweetService.getHashtags();
+		List<HashtagDTO> lstHashtags = tweetService.getHashtags();
 		
 		return ResponseEntity.ok(lstHashtags);
 	}

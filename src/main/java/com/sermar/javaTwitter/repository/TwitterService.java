@@ -34,19 +34,19 @@ public class TwitterService {
 
 	public List<Status> getTweets(){
 		
-		Query queryES = new Query("query").lang(Constants.TWITTER_API_SPAIN);
-		Query queryIT = new Query("query").lang(Constants.TWITTER_API_ITALIA);
-		Query queryFR = new Query("query").lang(Constants.TWITTER_API_FRANCE);
+		Query queryES = new Query(Constants.TWITTER_API_QUERY).lang(Constants.TWITTER_API_SPAIN);
+		Query queryIT = new Query(Constants.TWITTER_API_QUERY).lang(Constants.TWITTER_API_ITALIA);
+		Query queryFR = new Query(Constants.TWITTER_API_QUERY).lang(Constants.TWITTER_API_FRANCE);
 		
 		try {
 			
-			List<Status> tweets = new ArrayList<Status>();
+			List<Status> tweets = new ArrayList<>();
 			tweets.addAll(this.twitter.search(queryES).getTweets());
 			tweets.addAll(this.twitter.search(queryIT).getTweets());
 			tweets.addAll(this.twitter.search(queryFR).getTweets());
 			return tweets;
 		} catch (TwitterException e) {
-			return new ArrayList<Status>();
+			return new ArrayList<>();
 		}
 		
 		
