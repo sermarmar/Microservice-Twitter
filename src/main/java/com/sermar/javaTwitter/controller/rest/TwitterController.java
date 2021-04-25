@@ -47,7 +47,11 @@ public class TwitterController {
 	@PutMapping(value = "marcarTweet/{id}")
 	public ResponseEntity marcatTweet(@PathVariable("id") Long id){
 		
-		tweetService.marcarTweet(id);
+		try {
+			tweetService.marcarTweet(id);
+		} catch (TwitterException e) {
+			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
 		
 		return new ResponseEntity(HttpStatus.OK);
 		
@@ -55,10 +59,14 @@ public class TwitterController {
 	
 	//Este endpoint podemos consultar los tweets validados que está guardado en la base de datos
 	@GetMapping(value = "getTweetsValids/{user}")
-	public ResponseEntity<List<TweetDTO>> getTweetsValids(@PathVariable("user") String user){
+	public ResponseEntity getTweetsValids(@PathVariable("user") String user){
 		List<TweetDTO> lstTweets = new ArrayList<>();
 		
-		lstTweets = tweetService.getTweetsValids(user);
+		try {
+			lstTweets = tweetService.getTweetsValids(user);
+		} catch (TwitterException e) {
+			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
 		
 		return ResponseEntity.ok(lstTweets);
 	}

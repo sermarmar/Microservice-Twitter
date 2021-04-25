@@ -75,7 +75,7 @@ public class TweetService implements ITweetService{
 	}
 
 	
-	public List<TweetDTO> getTweetsValids(String user) {
+	public List<TweetDTO> getTweetsValids(String user) throws TwitterException {
 		List<TweetDTO> lstTweets = new ArrayList<TweetDTO>();
 		
 		List<TweetEntity> tweets = tweetRepository.findByUsuarioAndValidacion(user, true);
@@ -84,6 +84,8 @@ public class TweetService implements ITweetService{
 			for (TweetEntity tweet : tweets) {
 				lstTweets.add(ParseUtil.tweetEntityToDTO(tweet));
 			}
+		} else {
+			throw new TwitterException("No tiene tweets validados");
 		}
 
 		return lstTweets;

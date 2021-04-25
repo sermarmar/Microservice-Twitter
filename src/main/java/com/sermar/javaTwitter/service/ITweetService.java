@@ -13,7 +13,7 @@ public interface ITweetService {
 	
 	public void marcarTweet(Long id) throws TwitterException;
 	
-	public List<TweetDTO> getTweetsValids(String user);
+	public List<TweetDTO> getTweetsValids(String user) throws TwitterException;
 	
 	public List<HashtagDTO> getHashtags();
 	
