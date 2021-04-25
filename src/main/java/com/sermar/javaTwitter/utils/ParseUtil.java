@@ -13,12 +13,26 @@ import twitter4j.Status;
 @Builder
 public class ParseUtil {
 	
-	public static TweetDTO tweetEntityToDTO (Status tweet) {
+	public static TweetEntity tweetToEntity (Status tweet) {
 		
-		return TweetDTO.builder()
-				.usuario(tweet.getUser().getName())
+		return TweetEntity.builder()
+				.id(tweet.getId())
+				.usuario(tweet.getUser().getScreenName())
 				.texto(tweet.getText())
 				.localizacion(tweet.getUser().getLocation())
+				.validacion(false)
+				.build();
+		
+	}
+	
+	public static TweetDTO tweetEntityToDTO (TweetEntity tweet) {
+		
+		return TweetDTO.builder()
+				.id(tweet.getId())
+				.usuario(tweet.getUsuario())
+				.texto(tweet.getTexto())
+				.localizacion(tweet.getLocalizacion())
+				.validacion(tweet.getValidacion())
 				.build();
 		
 	}

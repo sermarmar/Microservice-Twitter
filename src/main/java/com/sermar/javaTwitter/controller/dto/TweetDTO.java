@@ -15,6 +15,7 @@ public class TweetDTO implements Serializable{
 	
 	private static final long serialVersionUID = 2265887114877642967L;
 	
+	private Long id;
 	private String usuario;
 	private String texto;
 	private String localizacion;

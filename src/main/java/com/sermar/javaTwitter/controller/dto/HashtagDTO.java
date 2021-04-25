@@ -15,7 +15,7 @@ public class HashtagDTO  implements Serializable{
 	
 	private static final long serialVersionUID = -1076317493926272629L;
 	
-	private Integer orden;
+	private Integer contador;
 	private String hashtag;
 
 }

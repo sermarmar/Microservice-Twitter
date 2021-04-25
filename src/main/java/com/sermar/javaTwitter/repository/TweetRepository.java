@@ -10,7 +10,7 @@ import com.sermar.javaTwitter.entities.TweetEntity;
 @Repository
 public interface TweetRepository extends JpaRepository<TweetEntity, Long>{
 
-	public List<TweetEntity> findByUsuario(String usuario);
+	public List<TweetEntity> findByUsuarioAndValidacion(String usuario, Boolean validacion);
 	
 	
 	

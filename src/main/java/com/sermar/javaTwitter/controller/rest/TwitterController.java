@@ -26,21 +26,9 @@ public class TwitterController {
 	@Autowired
 	ITweetService tweetService;
 	
-	@Value("${key}")
-	private String key;
-	@Value("${secret}")
-	private String secret;
-	@Value("${token}")
-	private String token;
-	@Value("${tsecret}")
-	private String tokenSecret;
-	
 	//Este endpoint podemos consultar los tweets de usuarios que tengan más de 1500 seguidores y pueden leer en diferentes idiomas que tiene que ser español, fracés e italiano
 	@GetMapping(value = "getTweets")
 	public ResponseEntity getTweets(){
-		
-		String key = this.key;
-		String secret = this.secret;
 		
 		List<TweetDTO> lstTweets = new ArrayList<>();
 		

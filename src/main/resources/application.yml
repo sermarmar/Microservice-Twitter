@@ -5,14 +5,11 @@ server:
   
 spring:
   datasource:
-    url: jdbc:mysql://localhost:8889/twitter
+    url: jdbc:mysql://localhost:8889/dbtwitter
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      connection-init-sql: "SET NAMES 'utf8mb4'" 
     
-key: HczroUeChuBOs1cf3drj4iHkc
-secret: kHOxoeFgAnaKg9Vc7eUxpO5AL5q1zmjdy7jtTjJUf8ihTtzeK2
-token: 3430250164-L5VqyDrnj8XNhLNfjXqkD1JOUgF3CR4DrLLwONp
-tsecret: ACmXgPPxmg1MBAxjDuylYZ5O2Tmc9MY5qtMQ5GL1NeQo3
-bearer: xxx
     

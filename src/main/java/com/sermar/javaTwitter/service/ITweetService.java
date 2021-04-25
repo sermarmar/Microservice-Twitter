@@ -11,10 +11,12 @@ public interface ITweetService {
 	
 	public List<TweetDTO> getTweets() throws TwitterException;
 	
-	public void marcarTweet(Long id);
+	public void marcarTweet(Long id) throws TwitterException;
 	
 	public List<TweetDTO> getTweetsValids(String user);
 	
 	public List<HashtagDTO> getHashtags();
+	
+	public void savedTweets();
 	
 }
