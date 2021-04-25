@@ -11,7 +11,7 @@ public interface ITweetService {
 	
 	public List<TweetDTO> getTweets();
 	
-	public void marcarTweet(Long id) throws TwitterException;
+	public String marcarTweet(Long id) throws TwitterException;
 	
 	public List<TweetDTO> getTweetsValids(String user) throws TwitterException;
 	

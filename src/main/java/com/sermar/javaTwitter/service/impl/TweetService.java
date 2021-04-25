@@ -45,7 +45,7 @@ public class TweetService implements ITweetService{
 	}
 
 	//Debemos insertar un tweet seleccionado desde Twitter a la base de datos.
-	public void marcarTweet(Long id) throws TwitterException {
+	public String marcarTweet(Long id) throws TwitterException {
 		
 		Optional<TweetEntity> tweetOpt = tweetRepository.findById(id);
 		if(tweetOpt.isPresent()) {
@@ -53,6 +53,12 @@ public class TweetService implements ITweetService{
 			tweet.setValidacion(!tweet.getValidacion());
 			
 			tweetRepository.saveAndFlush(tweet);
+			
+			if(tweet.getValidacion()) {
+				return "Validado";
+			} else {
+				return "No validado";
+			}
 		}
 		else {
 			throw new TwitterException("No existe el ID en Twitter");

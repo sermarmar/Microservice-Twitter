@@ -41,13 +41,15 @@ public class TwitterController {
 	@PutMapping(value = "marcarTweet/{id}")
 	public ResponseEntity marcatTweet(@PathVariable("id") Long id){
 		
+		String valid = null;
+		
 		try {
-			tweetService.marcarTweet(id);
+			valid = tweetService.marcarTweet(id);
 		} catch (TwitterException e) {
 			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity(HttpStatus.OK);
+		return new ResponseEntity("Se ha marcado '"+valid+"' correctamente", HttpStatus.OK);
 		
 	}
 	
